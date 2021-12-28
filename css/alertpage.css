@@ -1,0 +1,19 @@
+.alertpage {
+  width: 100vw;
+  height: 100vh;
+  text-align: center;
+  position: fixed;
+  background-color: rgba(150, 150, 150, 0.2);
+  pointer-events: none;
+  z-index: 6;
+  display: none;
+}
+
+.alerttext {
+  top: 50%;
+  width: 100%;
+  font-size: 400%;
+  color: rgba(0, 0, 0, 0.8);
+  transform: translateY(-50%);
+  position: absolute;
+}

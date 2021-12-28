@@ -1,0 +1,135 @@
+.intropage {
+  font-weight: 700;
+}
+
+.basicguide {
+  top: 4px;
+  left: 2px;
+  width: 99%;
+  height: 65px;
+  margin-bottom: 10px;
+  overflow: hidden;
+  background-color: rgba(255, 255, 255, 0.7);
+  position: relative;
+  text-align: center;
+  z-index: 5;
+}
+
+.basicguidetitle {
+  text-align: center;
+  font-size: 180%;
+  height: 65px;
+  position: relative;
+  cursor: pointer;
+}
+
+.basicguide:hover {
+  height: 600px;
+  transition-duration: 1s;
+}
+
+.basicguide img {
+  width: 90%;
+  /* left: 50%;
+  transform: translate(-50%, 0); */
+  position: relative;
+}
+
+.basicguidetext {
+  width: 50%;
+  left: 5px;
+  font-size: 120%;
+  font-weight: 500;
+  text-align: left;
+  position: relative;
+}
+
+.guidechesswrapper {
+  width: 100%;
+  /* height: 50%; */
+  height: 100px;
+  align-items: center;
+  justify-items: center;
+  display: grid;
+  position: relative;
+  top: 5px;
+  /* grid-template-rows: minmax(10px, 1fr) minmax(10px, 1fr) minmax(10px, 1fr) minmax(10px, 1fr) minmax(10px, 1fr); */
+  grid-template-columns: 1fr;
+  row-gap: 10px;
+  min-width: 0px;
+}
+
+.guidechess {
+  width: 99%;
+  height: 65px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.guidechess:hover {
+  height: 100px;
+  width: 98%;
+  transition-duration: 0.5s;
+  /* filter: blur(10px); */
+  filter: drop-shadow(0px 0px 8px rgb(255, 255, 255));
+}
+
+.guidechess:nth-child(1) {
+  background-color: rgba(131, 139, 255, 0.5);
+}
+
+.guidechess:nth-child(2) {
+  background-color: rgb(255, 166, 166, 0.5);
+}
+
+.guidechess:nth-child(3) {
+  background-color: rgba(136, 255, 136, 0.5);
+}
+
+.guidechess:nth-child(4) {
+  background-color: rgba(255, 254, 187, 0.5);
+}
+
+.guidechess:nth-child(5) {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.guidechess img {
+  height: 100%;
+  top: 50%;
+  transform: translate(0, -50%);
+  position: relative;
+}
+
+.guidedetailwrapper {
+  width: 100%;
+  top: 3px;
+  height: 470px;
+  position: relative;
+  text-align: center;
+  /* min-height: 0; */
+  overflow: scroll !important;
+}
+
+.guidedetailwrapper img {
+  display: block;
+  position: relative;
+  padding-bottom: 5px;
+  left: 50%;
+  transform: translate(-50%, 0);
+  width: 80%;
+}
+
+.guidedetailwrapper::-webkit-scrollbar {
+  display: none;
+}
+
+
+/* Hide scrollbar for IE, Edge and Firefox */
+
+guidedetailwrapper {
+  -ms-overflow-style: none;
+  /* IE and Edge */
+  scrollbar-width: none;
+  /* Firefox */
+}

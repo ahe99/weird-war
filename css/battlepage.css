@@ -1,0 +1,431 @@
+.battlepage {
+  width: 90vw;
+  height: 85vh;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 5;
+  display: none;
+  font-size: 200%;
+}
+
+
+/*玩家資訊*/
+
+.dashboard {
+  left: 67%;
+  width: 25%;
+  height: 60vh;
+  transform: translate(0, -50%);
+  top: 50%;
+  background-color: seashell;
+  justify-items: center;
+  align-items: center;
+  position: absolute;
+  display: grid;
+  /* display: none; */
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 2fr 2fr 1fr;
+  row-gap: 3px;
+  column-gap: 3px;
+  box-shadow: 5px 5px 10px black, 0px 0px 10px gray inset;
+  border: 3px solid black;
+  border-radius: 20px;
+  text-align: center;
+}
+
+.turn {
+  width: 100%;
+  height: 100%;
+  border-bottom: 3px solid black;
+  font-size: 3vw;
+  grid-column: span 2;
+}
+
+.deadmine {
+  width: 100%;
+  height: 100%;
+  border-bottom: 3px solid black;
+  grid-column: span 2;
+  display: grid;
+  justify-items: center;
+  align-items: end;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+.deadmine img {
+  width: 100%;
+}
+
+.deadenemy {
+  width: 100%;
+  height: 100%;
+  border-bottom: 3px solid black;
+  justify-items: center;
+  align-items: end;
+  grid-column: span 2;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+.deadenemy img {
+  width: 100%;
+}
+
+.ability {
+  width: 100%;
+  height: 100%;
+  border: 3px solid black;
+  border-bottom-left-radius: 20px;
+  cursor: pointer;
+  opacity: 1;
+}
+
+.ability:active {
+  filter: brightness(0.7);
+}
+
+.disable {
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  cursor: none;
+  opacity: 0.3;
+}
+
+.cancelability {
+  display: none;
+  background-color: rgb(255, 123, 123);
+}
+
+.cancelability:active {
+  filter: brightness(0.7);
+}
+
+.surrender {
+  width: 100%;
+  height: 100%;
+  border: 3px solid black;
+  border-bottom-right-radius: 20px;
+  cursor: pointer;
+}
+
+.surrender:active {
+  filter: brightness(0.7);
+}
+
+.askagainboard {
+  background-color: rgb(226, 226, 226);
+  display: none;
+  z-index: 5;
+}
+
+.askagain {
+  width: 100%;
+  height: 100%;
+  border-bottom: 3px solid black;
+  font-size: 3vw;
+  grid-column: span 2;
+}
+
+.giveup {
+  width: 100%;
+  height: 100%;
+  border-bottom: 3px solid black;
+  grid-column: span 2;
+  background-color: rgb(163, 255, 135);
+  cursor: pointer;
+}
+
+.giveup:active {
+  filter: brightness(0.7);
+}
+
+.notgiveup {
+  width: 100%;
+  height: 100%;
+  border-bottom: 3px solid black;
+  grid-column: span 2;
+  background-color: rgb(255, 123, 123);
+  cursor: pointer;
+}
+
+.notgiveup:active {
+  filter: brightness(0.7);
+}
+
+.chessboard {
+  /* width: 50vw; */
+  width: 100%;
+  min-width: 1140px;
+  height: 100%;
+  background-color: rgba(214, 212, 212, 0.45);
+  filter: drop-shadow(0 0 20px rgb(231, 231, 231));
+  border-radius: 30px;
+  display: block;
+}
+
+
+/*???*/
+
+
+/*實棋盤*/
+
+.realframe {
+  display: grid;
+  position: absolute;
+  width: 50vw;
+  transform: translate(0, -50%) scale(0.8, 0.8);
+  top: 50%;
+  opacity: 0.9;
+  grid-template-columns: repeat(14, 45px);
+  /* 重複分割成五塊，寬度為140px的區塊 */
+  grid-column-gap: 10px;
+  /* 調整左右間距 */
+  grid-row-gap: 35px;
+  /* 調整上下間距 */
+}
+
+.realhex {
+  width: 100px;
+  height: 58px;
+  font-size: 0;
+  background: linear-gradient(-45deg, #496a70, #a6d3dc);
+  cursor: pointer;
+  filter: drop-shadow(1px 1px 3px rgb(0, 0, 0));
+  position: relative;
+}
+
+.realhex:active {
+  transform: translate(4px, 6px) scale(0.99, 0.99);
+  filter: brightness(0.7);
+}
+
+.realhex::before,
+.realhex::after {
+  content: "";
+  display: block;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  transform: rotate(60deg);
+  background: linear-gradient(45deg, #a6d3dc, #2d6c79);
+}
+
+.realhex:after {
+  transform: rotate(120deg);
+}
+
+.realhex:nth-child(15n + 1) {
+  grid-column-start: 2;
+  /* 第一個區塊，橫軸開始排序位置為:2 */
+}
+
+.realhex:nth-child(15n + 2) {
+  grid-column-start: 4;
+  /* 第二個區塊，橫軸開始排序位置為:4 */
+}
+
+.realhex:nth-child(15n + 3) {
+  grid-column-start: 6;
+  /* 第三個區塊，橫軸開始排序位置為:6 */
+}
+
+.realhex:nth-child(15n + 4) {
+  grid-column-start: 8;
+  /* 第四個區塊，橫軸開始排序位置為:8 */
+}
+
+.realhex:nth-child(15n + 5) {
+  grid-column-start: 10;
+  /* 第五個區塊，橫軸開始排序位置為:10 */
+}
+
+.realhex:nth-child(15n + 6) {
+  grid-column-start: 12;
+  /* 第六個區塊，橫軸開始排序位置為:12 */
+}
+
+.realhex:nth-child(15n + 7) {
+  grid-column-start: 14;
+  /* 第七個區塊，橫軸開始排序位置為:14 */
+}
+
+.realhex:nth-child(15n + 8) {
+  grid-column-start: 1;
+}
+
+.realhex:nth-child(15n + 9) {
+  grid-column-start: 3;
+}
+
+.realhex:nth-child(15n + 10) {
+  grid-column-start: 5;
+}
+
+.realhex:nth-child(15n + 11) {
+  grid-column-start: 7;
+}
+
+.realhex:nth-child(15n + 12) {
+  grid-column-start: 9;
+}
+
+.realhex:nth-child(15n + 13) {
+  grid-column-start: 11;
+}
+
+.realhex:nth-child(15n + 14) {
+  grid-column-start: 13;
+}
+
+.realhex:nth-child(15n + 15) {
+  grid-column-start: 15;
+}
+
+.burnedhex {
+  cursor: none;
+  pointer-events: none;
+  /* background: linear-gradient(-45deg, #7c7c7c, #d4d4d4) !important; */
+  /* transition-duration: 2s; */
+}
+
+.burnedhex {
+  filter: brightness(0.3) sepia(1);
+  transition-duration: 2s;
+}
+
+
+/*虛棋盤*/
+
+.coverframe {
+  display: grid;
+  width: 50vw;
+  position: absolute;
+  transform: translate(0, -50%) scale(0.8, 0.8);
+  top: 50%;
+  /* align-items: end;
+  justify-items: center; */
+  grid-template-columns: repeat(14, 45px);
+  /* 重複分割成五塊，寬度為140px的區塊 */
+  grid-column-gap: 10px;
+  /* 調整左右間距 */
+  grid-row-gap: 35px;
+  /* 調整上下間距 */
+  pointer-events: none;
+}
+
+.coverhex {
+  width: 100px;
+  height: 58px;
+  font-size: 0px;
+  /* background: linear-gradient(-45deg, #cbfcaa, #ffc1f5); */
+  cursor: pointer;
+  position: relative;
+  align-items: flex-end;
+}
+
+.coverhex:nth-child(15n + 1) {
+  grid-column-start: 2;
+  /* 第一個區塊，橫軸開始排序位置為:2 */
+}
+
+.coverhex:nth-child(15n + 2) {
+  grid-column-start: 4;
+  /* 第二個區塊，橫軸開始排序位置為:4 */
+}
+
+.coverhex:nth-child(15n + 3) {
+  grid-column-start: 6;
+  /* 第三個區塊，橫軸開始排序位置為:6 */
+}
+
+.coverhex:nth-child(15n + 4) {
+  grid-column-start: 8;
+  /* 第四個區塊，橫軸開始排序位置為:8 */
+}
+
+.coverhex:nth-child(15n + 5) {
+  grid-column-start: 10;
+  /* 第五個區塊，橫軸開始排序位置為:10 */
+}
+
+.coverhex:nth-child(15n + 6) {
+  grid-column-start: 12;
+  /* 第六個區塊，橫軸開始排序位置為:12 */
+}
+
+.coverhex:nth-child(15n + 7) {
+  grid-column-start: 14;
+  /* 第七個區塊，橫軸開始排序位置為:14 */
+}
+
+.coverhex:nth-child(15n + 8) {
+  grid-column-start: 1;
+}
+
+.coverhex:nth-child(15n + 9) {
+  grid-column-start: 3;
+}
+
+.coverhex:nth-child(15n + 10) {
+  grid-column-start: 5;
+}
+
+.coverhex:nth-child(15n + 11) {
+  grid-column-start: 7;
+}
+
+.coverhex:nth-child(15n + 12) {
+  grid-column-start: 9;
+}
+
+.coverhex:nth-child(15n + 13) {
+  grid-column-start: 11;
+}
+
+.coverhex:nth-child(15n + 14) {
+  grid-column-start: 13;
+}
+
+.coverhex:nth-child(15n + 15) {
+  grid-column-start: 15;
+}
+
+.coverhex img {
+  left: 50%;
+  transform: translate(-50%, 0);
+  bottom: 8px;
+  position: absolute;
+  width: 120%;
+  /* height: 200%; */
+  /*its hard just keep da*/
+  filter: drop-shadow(10px 10px 5px rgba(0, 0, 0, 0.6));
+}
+
+.mychesshex {
+  filter: drop-shadow(3px 3px 10px rgb(0, 255, 255));
+  /* filter: drop-shadow(0px 0px 10px rgb(0, 1100, 0)); */
+}
+
+.enemychesshex {
+  filter: drop-shadow(3px 3px 10px rgb(255, 0, 255));
+}
+
+.enemyoptionhex {
+  filter: brightness(0.5);
+}
+
+.optionhex {
+  /*可被選擇*/
+  background: rgb(100, 255, 100);
+  /* filter: drop-shadow(0px 0px 10px rgb(0, 180, 0)); */
+}
+
+.chosenhex {
+  /* opacity: 0.5; */
+  filter: brightness(1.5);
+  /* filter: drop-shadow(0px 0px 10px rgb(0, 0, 255))!important; */
+  /*已被選擇(等待第二選擇)*/
+}

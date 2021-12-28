@@ -1,0 +1,100 @@
+.chesswrapper {
+  width: 100%;
+  height: 50%;
+  bottom: 55px;
+  /* padding-top: 10px; */
+  position: absolute;
+  display: grid;
+  justify-content: center;
+  justify-items: center;
+  align-items: end;
+  align-content: start;
+  grid-template-columns: minmax(50px, 1fr) minmax(50px, 1fr) minmax(50px, 1fr);
+  grid-column-gap: 6px;
+  grid-row-gap: 6px;
+  font-size: 0px;
+}
+
+.chesswrapper img {
+  width: 70%;
+  height: auto;
+  margin-bottom: 10px;
+}
+
+.wrawra {
+  height: 25%;
+  background-color: rgba(255, 255, 255, 0.3);
+  position: sticky;
+  top: 0px;
+}
+
+.emptywrapper {
+  width: 100%;
+  position: absolute;
+  top: 50%;
+  transform: translate(0, -50%);
+  /* overflow-y: hidden; */
+  /* padding-top: 5px; */
+  justify-items: center;
+  align-items: flex-end;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  z-index: 5;
+}
+
+
+/* .chesswrapper img:nth-last-child(1) {
+  padding-bottom: 100px;
+} */
+
+.chess:hover {
+  filter: drop-shadow( 5px 5px 5px rgb(70, 70, 70));
+}
+
+.chess {
+  cursor: pointer;
+  filter: drop-shadow( 5px 5px 5px grey);
+}
+
+.teamchess {
+  width: 70%;
+  cursor: pointer;
+  /* background-color: rgb(230, 178, 136); */
+  filter: drop-shadow(5px 5px 5px rgb(82, 220, 255));
+  border: dashed 5px rgba(70, 70, 70, 0.7);
+}
+
+.empty {
+  filter: drop-shadow( 5px 5px 5px grey) !important;
+}
+
+.locked {
+  filter: drop-shadow(5px 5px 5px rgb(144, 255, 79)) !important;
+}
+
+
+/********************************/
+
+.chesswrapper {
+  overflow-y: scroll;
+}
+
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+
+.chesswrapper::-webkit-scrollbar {
+  display: none;
+}
+
+
+/* Hide scrollbar for IE, Edge and Firefox */
+
+.chesswrapper {
+  -ms-overflow-style: none;
+  /* IE and Edge */
+  scrollbar-width: none;
+  /* Firefox */
+}
+
+
+/********************************/

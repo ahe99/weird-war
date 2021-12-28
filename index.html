@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="shortcut icon" href="./favicon.ico" type="image/x-icon" />
+  <link rel="stylesheet" href="css/generalpages.css" />
+  <link rel="stylesheet" href="css/listpage.css" />
+  <link rel="stylesheet" href="css/alertpage.css" />
+  <link rel="stylesheet" href="css/chesspage.css" />
+  <link rel="stylesheet" href="css/intropage.css" />
+  <link rel="stylesheet" href="css/battlepage.css" />
+  <link rel="stylesheet" href="css/sumpage.css" />
+
+  <style>
+    @font-face {
+      font-family: qingsong;
+      src: url("font/qingsong.ttf");
+    }
+    
+    body {
+      margin: 0px;
+      padding: 0px;
+      width: 100px;
+      white-space: nowrap;
+      font-family: "qingsong";
+      overflow: hidden;
+      /* overflow-x: scroll;
+      overflow-y: hidden; */
+    }
+    
+    .background {
+      top: 0;
+      left: 0;
+      width: 3000px;
+      white-space: nowrap;
+      height: 100vh;
+      opacity: 0.9;
+      background-image: url("assets/img/background.jpg");
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      z-index: -10;
+      position: relative;
+      position: fixed;
+    }
+    
+    .container {
+      width: 100vw;
+      height: 100vh;
+      padding: 0px;
+      margin: 0px;
+      position: fixed;
+      overflow: hidden;
+    }
+    /********************************/
+    /********************************/
+    /*chess page content*/
+  </style>
+  <title>奇怪的戰爭</title>
+</head>
+
+<body>
+  <div class="background">
+  </div>
+  <div class="container">
+    <div class="listpage">
+      <div class="titlewrapper">
+        <h1 class="pagetitle">奇怪的戰爭</h1>
+        <h1 class="titleshadow">奇怪的戰爭</h1>
+        <h1 class="titleshadow1">奇怪的戰爭</h1>
+      </div>
+
+      <!--隊伍預覽ㄉ圖片-->
+      <div class='beforelogin' onclick="loginWallet()"></div>
+      <div class="homechesswrapper">
+        <img class="hometeam" src="assets/img/empty.png">
+        <img class="hometeam" src="assets/img/empty.png">
+        <img class="hometeam" src="assets/img/empty.png">
+      </div>
+      <ul>
+        <li><a id="searchbtn" href="#javascript" onclick="findBattle()">開始配對</a></li>
+        <li><a href="#javascript" onclick="switchPage(1)">遊戲規則</a></li>
+        <li><a href="#javascript" onclick="switchPage(2)">隊伍配置</a></li>
+        <li><a class="musicplayer" href="#javascript" onclick="switchMusic()">音樂：off</a></li>
+        <!-- <li><a href="#javascript">音效：on</a></li> -->
+      </ul>
+
+    </div>
+
+    <div class="page searchpage">
+      <div class="titlewrapper">
+        <h1 class="pagetitle">尋找對手...</h1>
+        <h1 class="titleshadow">尋找對手...</h1>
+        <h1 class="titleshadow1">尋找對手...</h1>
+      </div>
+
+      <ul>
+        <li><a class="cancelbtn" href="#javascript" onclick="toServer.cancelFind()">
+          取消配對</a></li>
+      </ul>
+    </div>
+
+    <div class="page intropage">
+      <div class="titlewrapper">
+        <h1 class="pagetitle">奇怪的戰爭</h1>
+        <h1 class="titleshadow">奇怪的戰爭</h1>
+        <h1 class="titleshadow1">奇怪的戰爭</h1>
+      </div>
+      <div class="basicguide">
+        <div class=" basicguidetitle">
+          基本規則
+        </div>
+        <div class="basicguidetext">
+          棋盤配置：
+        </div>
+
+        <img src="assets/img/guide/basicguide.png" alt="">
+        <div class="basicguidetext">
+          五個屬性各自的移動方式及能力，
+          <br> 每回合可移動一個棋子，或是使用一能力，
+          <br> (水屬性例外，其能力不會消耗回合)。
+          <br>
+          <br> 遊戲目標：
+          <br> 1.移動到敵方陣營(最後一排)。
+          <br> 2.擊敗(撞倒)對方所有棋子。
+        </div>
+      </div>
+      <div class="guidechesswrapper">
+
+        <div class="guidechess" onclick="popGuide(0)">
+          <img src="assets/img/guide/water.png" alt="">
+        </div>
+        <div class="guidechess" onclick="popGuide(1)">
+          <img src="assets/img/guide/fire.png" alt="">
+        </div>
+        <div class="guidechess" onclick="popGuide(2)">
+          <img src="assets/img/guide/grass.png" alt="">
+        </div>
+        <div class="guidechess" onclick="popGuide(3)">
+          <img src="assets/img/guide/light.png" alt="">
+        </div>
+        <div class="guidechess" onclick="popGuide(4)">
+          <img src="assets/img/guide/dark.png" alt="">
+        </div>
+
+      </div>
+      <div class="guidedetailwrapper" style="display: none;">
+        <div class="basicguidetext">
+          移動方式：
+        </div>
+        <img src="assets/img/guide/watermove.png" alt="">
+        <div class="basicguidetext">
+          特殊能力：<br> 🙂。
+        </div>
+        <img src="assets/img/guide/waterability1.png" alt="">
+      </div>
+      <div class="guidedetailwrapper" style="display: none;">
+        <div class="basicguidetext">
+          移動方式：
+        </div>
+        <img src="assets/img/guide/firemove.png" alt="">
+        <div class="basicguidetext">
+          特殊能力：<br> 永久點火一個格子，雙方不得踏進此格。
+        </div><img src="assets/img/guide/fireability1.png" alt="">
+        <img src="assets/img/guide/fireability2.png" alt="">
+        <img src="assets/img/guide/fireability3.png" alt="">
+      </div>
+      <div class="guidedetailwrapper" style="display: none;">
+        <div class="basicguidetext">
+          移動方式：
+        </div>
+        <img src="assets/img/guide/grassmove.png" alt="">
+        <div class="basicguidetext">
+          特殊能力：<br> 直接跳過一回合。
+        </div><img src="assets/img/guide/grassability1.png" alt="">
+      </div>
+      <div class="guidedetailwrapper" style="display: none;">
+        <div class="basicguidetext">
+          移動方式：
+        </div>
+        <img src="assets/img/guide/lightmove.png" alt="">
+        <div class="basicguidetext">
+          特殊能力：<br> 交換我方兩枚棋子的位置。
+        </div><img src="assets/img/guide/lightability1.png" alt="">
+        <img src="assets/img/guide/lightability2.png" alt="">
+      </div>
+      <div class="guidedetailwrapper" style="display: none;">
+        <div class="basicguidetext">
+          移動方式：
+        </div>
+        <img src="assets/img/guide/darkmove.png" alt="">
+        <div class="basicguidetext">
+          特殊能力：<br> 交換敵方兩枚棋子的位置。
+        </div><img src="assets/img/guide/darkability1.png" alt="">
+        <img src="assets/img/guide/darkability2.png" alt="">
+      </div>
+      <ul>
+        <li><a class="cancelbtn guidebtn" href="#javascript" onclick="backList(1)">
+          返回</a></li>
+      </ul>
+    </div>
+
+    <div class="page teampage">
+      <div class="titlewrapper">
+        <h1 class="pagetitle">奇怪的戰爭</h1>
+        <h1 class="titleshadow">奇怪的戰爭</h1>
+        <h1 class="titleshadow1">奇怪的戰爭</h1>
+      </div>
+      <div class="wrawra">
+        <div class="emptywrapper">
+          <img class="teamchess empty" src="assets/img/empty.png" onclick="unlockChess(0)">
+          <img class="teamchess empty" src="assets/img/empty.png" onclick="unlockChess(1)">
+          <img class="teamchess empty" src="assets/img/empty.png" onclick="unlockChess(2)">
+        </div>
+      </div>
+      <div class="chesswrapper">
+      </div>
+      <ul>
+        <li><a class="cancelbtn" href="#javascript" onclick="backList(2)">
+          返回</a></li>
+      </ul>
+    </div>
+
+
+    <div class="battlepage">
+      <div class='chessboard'>
+        <div class="realframe">
+          <div class="realhex"></div>
+          <div class="realhex enemychesshex"></div>
+          <div class="realhex"></div>
+          <div class="realhex enemychesshex"></div>
+          <div class="realhex"></div>
+          <div class="realhex enemychesshex"></div>
+          <div class="realhex"></div>
+          <div class="realhex"></div>
+          <div class="realhex"></div>
+          <div class="realhex"></div>
+          <div class="realhex"></div>
+          <div class="realhex"></div>
+          <div class="realhex"></div>
+          <div class="realhex"></div>
+          <div class="realhex"></div>
+          <div class="realhex"></div>
+          <div class="realhex"></div>
+          <div class="realhex"></div>
+          <div class="realhex"></div>
+          <div class="realhex"></div>
+          <div class="realhex"></div>
+          <div class="realhex"></div>
+          <div class="realhex"></div>
+          <div class="realhex"></div>
+          <div class="realhex"></div>
+          <div class="realhex"></div>
+          <div class="realhex"></div>
+          <div class="realhex"></div>
+          <div class="realhex"></div>
+          <div class="realhex"></div>
+          <div class="realhex"></div>
+          <div class="realhex"></div>
+          <div class="realhex"></div>
+          <div class="realhex"></div>
+          <div class="realhex"></div>
+          <div class="realhex"></div>
+          <div class="realhex"></div>
+          <div class="realhex"></div>
+          <div class="realhex"></div>
+          <div class="realhex"></div>
+          <div class="realhex"></div>
+          <div class="realhex"></div>
+          <div class="realhex"></div>
+          <div class="realhex"></div>
+          <div class="realhex"></div>
+          <div class="realhex"></div>
+          <div class="realhex mychesshex"></div>
+          <div class="realhex"></div>
+          <div class="realhex mychesshex"></div>
+          <div class="realhex"></div>
+          <div class="realhex mychesshex"></div>
+          <div class="realhex"></div>
+        </div>
+        <div class="coverframe">
+          <div class="coverhex"></div>
+          <div class="coverhex"></div>
+          <div class="coverhex"></div>
+          <div class="coverhex"></div>
+          <div class="coverhex"></div>
+          <div class="coverhex"></div>
+          <div class="coverhex"></div>
+          <div class="coverhex"></div>
+          <div class="coverhex"></div>
+          <div class="coverhex"></div>
+          <div class="coverhex"></div>
+          <div class="coverhex"></div>
+          <div class="coverhex"></div>
+          <div class="coverhex"></div>
+          <div class="coverhex"></div>
+          <div class="coverhex"></div>
+          <div class="coverhex"></div>
+          <div class="coverhex"></div>
+          <div class="coverhex"></div>
+          <div class="coverhex"></div>
+          <div class="coverhex"></div>
+          <div class="coverhex"></div>
+          <div class="coverhex"></div>
+          <div class="coverhex"></div>
+          <div class="coverhex"></div>
+          <div class="coverhex"></div>
+          <div class="coverhex"></div>
+          <div class="coverhex"></div>
+          <div class="coverhex"></div>
+          <div class="coverhex"></div>
+          <div class="coverhex"></div>
+          <div class="coverhex"></div>
+          <div class="coverhex"></div>
+          <div class="coverhex"></div>
+          <div class="coverhex"></div>
+          <div class="coverhex"></div>
+          <div class="coverhex"></div>
+          <div class="coverhex"></div>
+          <div class="coverhex"></div>
+          <div class="coverhex"></div>
+          <div class="coverhex"></div>
+          <div class="coverhex"></div>
+          <div class="coverhex"></div>
+          <div class="coverhex"></div>
+          <div class="coverhex"></div>
+          <div class="coverhex"></div>
+
+          <div class="coverhex"></div>
+          <div class="coverhex"></div>
+
+          <div class="coverhex"></div>
+          <div class="coverhex"></div>
+
+          <div class="coverhex"></div>
+          <div class="coverhex"></div>
+        </div>
+        <div class="dashboard">
+          <div class="turn">
+            輪到你了!
+          </div>
+          <div class="deadenemy"></div>
+          <div class="deadmine"></div>
+          <div class="ability disable" onclick="useAbility(currentSelect)">使用<br>能力</div>
+          <div class="ability cancelability" onclick="cancelAbility()">取消<br>能力</div>
+          <div class="surrender" onclick="asksurrender()">
+            投降
+          </div>
+        </div>
+        <div class="dashboard askagainboard">
+          <div class="askagain">
+            確定投降?
+          </div>
+          <div class="giveup" onclick="surrender()">是</div>
+          <div class="notgiveup" onclick="cancelsurrender()">否</div>
+        </div>
+      </div>
+
+    </div>
+    <div class="page loginpage">
+      <div class="titlewrapper">
+        <h1 class="pagetitle">奇怪的戰爭</h1>
+        <h1 class="titleshadow">奇怪的戰爭</h1>
+        <h1 class="titleshadow1">奇怪的戰爭</h1>
+      </div>
+    </div>
+
+    <div class="alertpage">
+      <div class="alerttext">請先選擇隊伍成員！</div>
+    </div>
+    <div class="sumpage" onclick="backList(4)">
+      <div class="sumtext"></div>
+    </div>
+    <audio id="music" src="./assets/music/Good Morning_ - Reed Mathis.mp3" style="visibility:none" loop autoplay muted></audio>
+
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/web3/1.6.1-rc.0/web3.min.js' integrity='sha512-+4Gl8sbHe5qD5EQiPtIva4be9TwUmmzgYJUdGbhsLYNegQw4Quda/4QdZpJzx8cHq2s1F4PoIpAnERQ0hHTcNQ==' crossorigin='anonymous'></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/axios/0.9.1/axios.js' integrity='sha512-Kg0CewqPNO/ziOJuCq5eyl3P/V6OLz/Lb1I2m+yKS3lHZcGVFN/KOew18rWP+kTsL7haYdaqGjwHQCZrN0heLQ==' crossorigin='anonymous'></script>
+    <script src="https://cdn.socket.io/4.3.2/socket.io.js"></script>
+    <script src='js/wallet.js'></script>
+    <script src='js/list.js'></script>
+    <script src='js/team.js'></script>
+    <script src='js/alert.js'></script>
+    <script src='js/sum.js'></script>
+    <script src='js/battle/move.js'></script>
+    <script src='js/battle/ability.js'></script>
+    <script src='js/battle/battle.js'></script>
+
+</body>
+<script>
+  let background = document.getElementsByClassName('background')[0];
+  scrollBackground();
+  async function scrollBackground() {
+    for (let i = 0; i < (3000 - innerWidth); i++) {
+      // console.log(background.style.transform);
+      background.style.transform = 'translate(' + (-i) + 'px,0px)';
+      await sleep(80);
+    }
+    return scrollBackground();
+  }
+  // console.log(window.innerHeight);
+  // if (window.innerHeight < 620) {
+  //   console.log(123);
+  //   console.log(document.getElementsByClassName('realframe')[0].style);
+  //   document.getElementsByClassName('realframe')[0].style.transform = 'translate(0, -50%) scale(0.7, 0.7);';
+  //   document.getElementsByClassName('coverframe')[0].style.transform = 'translate(0, -50%) scale(0.7, 0.7);';
+
+  //   //transform: translate(0, -50%) scale(0.9, 0.9);
+  // }
+  // let background = document.getElementsByClassName('background')[0];
+  // console.log(background.style.scrollLeft);
+
+  // background.style.scrollLeft = 200;
+  // console.log(background);
+  // console.log(background.style.scrollLeft);
+
+  //  初始化隊伍?
+</script>
+
+</html>
