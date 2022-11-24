@@ -22,16 +22,6 @@ let myTeam = [{}, {}, {}];
 let myChess = new Array(); //使用者所有的棋子
 let imgURL = 'https://raw.githubusercontent.com/ACS107135/weirdwar-server/master/Gene/';
 
-/* { "description": "HELLO!",
-  "name": "Gene: 0361",
-  "background_color": "#FFFFDF",
-  "image": "https://raw.githubusercontent.com/ACS107135/weirdwar-server/master/Gene/wa5c.png",
-  "attributes": [ { "trait_type": "Type", "value": "Water" },
-                  { "trait_type": "Head", "value": "Nothing" },
-                  { "trait_type": "Eye", "value": "Glasses" },
-                  { "trait_type": "Pattern", "value": "Nothing" }] }
-*/
-
 function refreshMyChess(chess, count) {
   let optChess = {}
   optChess.name = chess.name;
@@ -54,7 +44,7 @@ function rederMyChess(count) { //reder team page
   //'<img class="chess" src="" onclick="pickChess(this)" >'
   let teamchess = document.createElement('img');
   teamchess.classList.add('chess');
-
+console.log(myChess)
   teamchess.src = myChess[count].img;
   teamchess.alt = myChess[count].id;
   teamchess.style.display = "block";

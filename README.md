@@ -2,9 +2,16 @@
 
 學校期末專題_dapp遊戲
 
+```
+Note: 
+
+this is preview version, which means 
+it wouldn't connect to Metamask/ find another player via socket.io
+```
+
 [---> LINK <---](http://snorlax.lionfree.net/)
 
-純手刻
+vanilla js css html
 
 socket.io + metamask
 
