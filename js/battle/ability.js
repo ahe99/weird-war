@@ -1,23 +1,26 @@
 function useAbility(chess) {
-  if (chess.ability == true) {
-    for (let i = 0; i < 52; i++) { //flush all click event
-      realhex[i].onclick = undefined;
-    }
-    resetAllCellsColor();
-    document.getElementsByClassName('ability')[0].style.display = 'none';
-    document.getElementsByClassName('cancelability')[0].style.display = 'block';
-    if (chess.type === 'water') {
-      waterAbility();
-    } else if (chess.type === 'fire') {
-      fireAbility();
-    } else if (chess.type === 'grass') {
-      grassAbility();
-    } else if (chess.type === 'light') {
-      lightAbility();
-    } else if (chess.type === 'dark') {
-      darkAbility();
-    }
-  }
+  //disable in preview version
+  return 
+
+  // if (chess.ability == true) {
+  //   for (let i = 0; i < 52; i++) { //flush all click event
+  //     realhex[i].onclick = undefined;
+  //   }
+  //   resetAllCellsColor();
+  //   document.getElementsByClassName('ability')[0].style.display = 'none';
+  //   document.getElementsByClassName('cancelability')[0].style.display = 'block';
+  //   if (chess.type === 'water') {
+  //     waterAbility();
+  //   } else if (chess.type === 'fire') {
+  //     fireAbility();
+  //   } else if (chess.type === 'grass') {
+  //     grassAbility();
+  //   } else if (chess.type === 'light') {
+  //     lightAbility();
+  //   } else if (chess.type === 'dark') {
+  //     darkAbility();
+  //   }
+  // }
 }
 
 function cancelAbility() {
@@ -61,9 +64,8 @@ function burned(cell) {
   console.log('fire ability:');
   console.log('cell:' + cell.textContent + 'got burned!');
   console.log('-----------------');
-  toServer.burnCell(Number(cell.textContent));
   disableAbility();
-  endMyTurn();
+  // endMyTurn();
 }
 
 function grassAbility() {
@@ -71,7 +73,7 @@ function grassAbility() {
   console.log('pass one turn!');
   console.log('-----------------');
   disableAbility();
-  endMyTurn();
+  // endMyTurn();
   //pass
 }
 
@@ -134,7 +136,7 @@ function lightChooseSecondChess(chess) {
     return chess;
   });
   disableAbility();
-  endMyTurn();
+  // endMyTurn();
 }
 
 function darkAbility() {
@@ -195,9 +197,8 @@ function darkChooseSecondChess(chess) {
     return chess;
   });
   console.log(enemyTeam);
-  toServer.darkswap();
   disableAbility();
-  endMyTurn();
+  // endMyTurn();
 }
 
 function disableAbility() { //用過能力

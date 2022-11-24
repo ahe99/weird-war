@@ -97,7 +97,7 @@
       </div>
 
       <ul>
-        <li><a class="cancelbtn" href="#javascript" onclick="toServer.cancelFind()">
+        <li><a class="cancelbtn" href="#javascript" onclick="backList(0)">
           取消配對</a></li>
       </ul>
     </div>
@@ -343,7 +343,8 @@
           </div>
           <div class="deadenemy"></div>
           <div class="deadmine"></div>
-          <div class="ability disable" onclick="useAbility(currentSelect)">使用<br>能力</div>
+          <!-- <div class="ability disable" onclick="useAbility(currentSelect)">使用<br>能力</div> -->
+          <div class="ability disable" onclick="popAlert('預覽版本暫不支持')">使用<br>能力</div>
           <div class="ability cancelability" onclick="cancelAbility()">取消<br>能力</div>
           <div class="surrender" onclick="asksurrender()">
             投降

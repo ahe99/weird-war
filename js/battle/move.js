@@ -474,8 +474,6 @@ function stopPeekMinePossibleMoves(from) { //沒有操作邏輯,純看
 
 function peekEnemyPossibleMoves(from) { //沒有操作邏輯,純看
   let chess = enemyTeam.find(data => { return data.at === Number(from.textContent) });
-  // console.log(enemyTeam);
-  // console.log(chess);
   let possibleMoves = chess.next;
   for (let i of possibleMoves) {
     realhex[i].classList.add('enemyoptionhex');
@@ -518,7 +516,7 @@ function moveChess(from /*realhex*/ , to /*realhex*/ ) { //移動棋子
   resetCells(); //重置
   refreshGravyargd();
   refreshDashboard();
-  endMyTurn();
+  // endMyTurn();
   checkOver();
 }
 
@@ -614,7 +612,6 @@ function attackChess(from, to) { //攻擊敵方棋子時
     }
     return chess;
   });
-  toServer.attackChess();
   //toCoverhex.removeChild(toCoverhex.firstChild);
 }
 

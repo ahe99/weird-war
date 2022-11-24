@@ -1,26 +1,33 @@
-// let myTeam = [{
-//   "img": "https://raw.githubusercontent.com/ACS107135/weirdwar-server/master/Gene/wa5c.png",
-//   "id": 0,
-//   "type": "water",
-//   "dead": false,
-//   "ability": true
-// }, {
-//   "img": "https://raw.githubusercontent.com/ACS107135/weirdwar-server/master/Gene/fa6c.png",
-//   "id": 1,
-//   "type": "fire",
-//   "dead": false,
-//   "ability": true
-// }, {
-//   "img": "https://raw.githubusercontent.com/ACS107135/weirdwar-server/master/Gene/s1b7.png",
-//   "id": 2,
-//   "type": "light",
-//   "dead": false,
-//   "ability": true
-// }];
+let myTeam = [
+    {
+      name: "Gene: 2a00",
+      img: "https://raw.githubusercontent.com/ahe99/weirdwar-server/master/Gene/fabc.png",
+      id: 3,
+      type: "fire",
+      dead: false,
+      ability: true
+  },
+  {
+      name: "Gene: 6309",
+      img: "https://raw.githubusercontent.com/ahe99/weirdwar-server/master/Gene/s3b9.png",
+      id: 1,
+      type: "light",
+      dead: false,
+      ability: true
+  },
+  {
+      name: "Gene: 8664",
+      img: "https://raw.githubusercontent.com/ahe99/weirdwar-server/master/Gene/d257.png",
+      id: 2,
+      type: "dark",
+      dead: false,
+      ability: true
+  }
+]
 
-let myTeam = [{}, {}, {}];
+// let myTeam = [{}, {}, {}];
 let myChess = new Array(); //使用者所有的棋子
-let imgURL = 'https://raw.githubusercontent.com/ACS107135/weirdwar-server/master/Gene/';
+let imgURL = 'https://raw.githubusercontent.com/ahe99/weirdwar-server/master/Gene/';
 
 function refreshMyChess(chess, count) {
   let optChess = {}
@@ -44,7 +51,7 @@ function rederMyChess(count) { //reder team page
   //'<img class="chess" src="" onclick="pickChess(this)" >'
   let teamchess = document.createElement('img');
   teamchess.classList.add('chess');
-console.log(myChess)
+
   teamchess.src = myChess[count].img;
   teamchess.alt = myChess[count].id;
   teamchess.style.display = "block";
