@@ -9,7 +9,7 @@ this is preview version, which means
 it wouldn't connect to Metamask/ find another player via socket.io
 ```
 
-[---> LINK (preview) <---](ahe99.github.io/weird-war/)
+[---> LINK (preview) <---](https://ahe99.github.io/weird-war/)
 
 vanilla js css html
 
